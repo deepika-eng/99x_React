@@ -1,0 +1,115 @@
+.scrolling-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    text-align: center;
+    font-size: 7.5em;
+    background: black;
+    padding: 0; /* Remove padding to avoid extra space */
+  }
+  
+  .first-line, .second-line, .third-line {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove padding to avoid extra space */
+  }
+  
+  /* Optional: Add some margin-bottom to space the lines slightly */
+  .first-line {
+    margin-bottom: -0.5rem;
+  }
+  
+  .second-line {
+    margin-bottom: -0.5rem;
+  }
+  
+  .digital {
+    color: rgb(44, 44, 44); /* Initial color */
+    transition: color 0.5s ease, transform 0.5s ease;
+  }
+  
+  .second-line {
+    color: rgb(44, 44, 44); /* Initial color */
+    transition: color 0.5s ease, transform 0.5s ease;
+  }
+  
+  .third-line {
+    color: rgb(44, 44, 44); /* Initial color */
+    transition: color 0.5s ease, transform 0.5s ease;
+  }
+  
+  
+  /* Add keyframes for the text reveal and zoom effect */
+  @keyframes text-reveal {
+    0% {
+      color: rgb(78, 78, 78);
+      transform: scale(1);
+    }
+    100% {
+      color: white;
+      transform: scale(1.2); /* Adjust scale as needed */
+    }
+  }
+  
+  /* Add animation when the text container is scrolled */
+  .scrolled .digital {
+    animation: text-reveal 1s forwards;
+  }
+  
+  
+  .scrolled .second-line span {
+    animation: text-reveal 2s forwards;
+  }
+  
+  .scrolled .third-line .strike {
+    animation: text-reveal 2.5s forwards ;
+    position: relative;
+  }
+  
+  .scrolled .strike::before
+  {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 55%;
+      height: 10px; /* Adjust the thickness of the line */
+      width: 100%;
+      background-color: rgb(218, 189, 0); /* Adjust the color of the line */
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: line-through 1.5s forwards;
+  }
+  
+  /* Keyframes for the strike-through effect */
+  @keyframes line-through {
+    to {
+        transform: scaleX(1);
+    }
+  }
+  
+  /* Additional styling to ensure the zoom effect looks smooth */
+  .scrolling-text-container span {
+    display: inline-block;
+    transform-origin: center center;
+  }
+  
+  .scrolled .new-word {
+    font-family: cursive;
+    color: rgb(231, 200, 0) ;
+    font-size: 5rem;
+    display: inline-block;
+    opacity: 0;
+    animation: fadeIn 7s forwards;
+    margin-left: 4rem; /* Adjust spacing as needed */
+    transform: rotate(12deg);
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
